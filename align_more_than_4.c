@@ -6,7 +6,7 @@
 /*   By: srakuma <srakuma@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 19:32:50 by srakuma           #+#    #+#             */
-/*   Updated: 2021/07/05 18:19:54 by srakuma          ###   ########.fr       */
+/*   Updated: 2021/07/06 18:45:26 by srakuma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,9 +126,6 @@ void	align_more_7(t_bcl *bcl, t_cmd *cmd)
 	median = calc_median(boundary, bcl);
 	get_stack_b(boundary, bcl, cmd, median->value);
 	quick_sort(bcl, boundary, cmd);
-	while (!check_alignment(boundary, bcl, 0))
-	{
-		get_stack_b(boundary, min, cmd, INT_MAX);
-		quick_sort(bcl, boundary, cmd);
-	}
+	get_stack_b(boundary, min, cmd, INT_MAX);
+	quick_sort(bcl, boundary, cmd);
 }
