@@ -6,7 +6,7 @@
 /*   By: srakuma <srakuma@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 13:58:54 by srakuma           #+#    #+#             */
-/*   Updated: 2021/07/05 00:39:31 by srakuma          ###   ########.fr       */
+/*   Updated: 2021/07/08 15:10:49 by srakuma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	check_dupulication(t_bcl *bcl)
 	t_bcl	*head;
 
 	start = set_boundary(bcl);
+	start = start->next;
 	while (start != bcl)
 	{
 		head = start->next;
