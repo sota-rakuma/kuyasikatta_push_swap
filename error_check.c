@@ -6,7 +6,7 @@
 /*   By: srakuma <srakuma@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 13:58:54 by srakuma           #+#    #+#             */
-/*   Updated: 2021/07/08 15:10:49 by srakuma          ###   ########.fr       */
+/*   Updated: 2021/07/10 21:19:39 by srakuma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,6 @@ int	is_numrange_ok(char *argv)
 		flag = -1;
 		argv++;
 	}
-	if (ft_strlen(argv) > 10)
-		return (0);
 	num = 0;
 	while (*argv)
 	{
