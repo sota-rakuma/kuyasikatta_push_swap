@@ -6,7 +6,7 @@
 /*   By: srakuma <srakuma@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 17:16:11 by srakuma           #+#    #+#             */
-/*   Updated: 2021/07/04 23:51:34 by srakuma          ###   ########.fr       */
+/*   Updated: 2021/07/11 13:00:59 by srakuma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,16 @@ t_bcl	*init_bcl(int argc, char *argv[])
 	guard = ft_lstnew(0);
 	boundary = ft_lstnew(0);
 	if (!guard || !boundary)
-		return (NULL);
+	{
+		ft_putendl_fd("memory allocate failure", 2);
+		exit (EXIT_FAILURE);
+	}
 	bcl = get_bcl(argv, argc, guard, boundary);
 	if (!bcl)
-		return (NULL);
+	{
+		ft_putendl_fd("memory allocate failure", 2);
+		exit (EXIT_FAILURE);
+	}
 	bcl->next = guard;
 	guard->prev = bcl;
 	return (guard);

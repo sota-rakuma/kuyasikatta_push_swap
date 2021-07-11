@@ -6,7 +6,7 @@
 /*   By: srakuma <srakuma@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 14:57:06 by srakuma           #+#    #+#             */
-/*   Updated: 2021/07/05 22:53:27 by srakuma          ###   ########.fr       */
+/*   Updated: 2021/07/11 14:22:24 by srakuma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ char	**get_cmd_arr(void)
 	tmp = ft_strdup("pa pb ra rb rra rrb sa sb rr rrr ss");
 	if (!tmp)
 	{
-		ft_putendl_fd("mmemory allocate Error", 2);
+		ft_putendl_fd("memory allocate Error", 2);
 		exit(EXIT_FAILURE);
 	}
 	arr = ft_split(tmp, ' ');
 	free(tmp);
 	if (!arr)
 	{
-		ft_putendl_fd("mmemory allocate Error", 2);
+		ft_putendl_fd("memory allocate Error", 2);
 		exit(EXIT_FAILURE);
 	}
 	return (arr);
@@ -44,10 +44,12 @@ int	cmp_cmd(char **arr, char *line)
 		if (!ft_strncmp(arr[i], line, ft_strlen(arr[i]) + 1))
 		{
 			free_dp(arr);
+			free(line);
 			return (i);
 		}
 	}
 	free_dp(arr);
+	free(line);
 	return (-1);
 }
 
@@ -82,7 +84,6 @@ int	read_cmds(t_bcl *bcl, t_cmd *cmd)
 	{
 		if (res == 1 && !execute_cmd(cmp_cmd(get_cmd_arr(), line), bcl, cmd))
 		{
-			free(line);
 			ft_putendl_fd("Error", 2);
 			return (0);
 		}
@@ -110,11 +111,10 @@ int	main(int argc, char *argv[])
 	if (argc <= 1)
 		return (0);
 	check_arg_range(argc, argv);
-	flag = 1;
 	bcl = init_bcl(argc, argv);
 	if (!check_dupulication(bcl))
 	{
-		free(bcl);
+		free_bcl(bcl);
 		exit(EXIT_FAILURE);
 	}
 	cmd = init_cmd();

@@ -6,7 +6,7 @@
 /*   By: srakuma <srakuma@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 01:12:52 by srakuma           #+#    #+#             */
-/*   Updated: 2021/07/05 01:13:10 by srakuma          ###   ########.fr       */
+/*   Updated: 2021/07/11 13:54:15 by srakuma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,12 @@
 
 void	free_dp(char **arr)
 {
-	char	*tmp;
 	int		i;
 
 	i = 0;
 	while (arr[i])
 	{
-		tmp = arr[i];
-		free(tmp);
+		free(arr[i]);
 		i++;
 	}
 	free(arr);
@@ -41,7 +39,9 @@ void	free_cmd(t_cmd *first)
 		tmp = first;
 		first = first->next;
 	}
-	free(first);
+	if (last->prev != last)
+		free(last->prev);
+	free(last);
 }
 
 void	free_bcl(t_bcl *first)
@@ -58,5 +58,6 @@ void	free_bcl(t_bcl *first)
 		tmp = first;
 		first = first->next;
 	}
-	free(first);
+	free(last->prev);
+	free(last);
 }

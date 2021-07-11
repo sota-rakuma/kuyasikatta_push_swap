@@ -6,7 +6,7 @@
 /*   By: srakuma <srakuma@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 15:53:37 by srakuma           #+#    #+#             */
-/*   Updated: 2021/07/05 22:51:01 by srakuma          ###   ########.fr       */
+/*   Updated: 2021/07/11 14:23:30 by srakuma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,7 @@ int	main(int argc, char *argv[])
 
 	check_arg_range(argc, argv);
 	bcl = init_bcl(argc, argv);
-	if (!bcl)
-	{
-		ft_putendl_fd("memory allocate failure", 2);
-		exit (EXIT_FAILURE);
-	}
+	boundary = set_boundary(bcl);
 	cmd = init_cmd();
 	if (!cmd)
 	{
@@ -43,8 +39,7 @@ int	main(int argc, char *argv[])
 		free_bcl(bcl);
 		exit (EXIT_FAILURE);
 	}
-	boundary = set_boundary(bcl);
-	if (check_dupulication(bcl))
+	if (!check_alignment(boundary, bcl, 0) && check_dupulication(bcl))
 		exec_sort(bcl, boundary, cmd, ft_lstsize(boundary, bcl));
 	free_bcl(bcl);
 	free_cmd(cmd);
