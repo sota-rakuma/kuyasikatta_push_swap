@@ -6,7 +6,7 @@
 /*   By: srakuma <srakuma@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 14:25:25 by srakuma           #+#    #+#             */
-/*   Updated: 2021/07/05 00:04:42 by srakuma          ###   ########.fr       */
+/*   Updated: 2021/07/28 14:09:04 by srakuma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ void	asecnding_less_3(t_bcl *first, t_bcl *last, t_cmd *cmd, int spec)
 		else
 			command = 0;
 		if (spec == 0)
-			return (exec_cmd(last, command, cmd, spec));
+			exec_cmd(last, command, cmd, spec);
 		else
-			return (exec_cmd(first, command, cmd, spec));
+			exec_cmd(first, command, cmd, spec);
 	}
 }
 
